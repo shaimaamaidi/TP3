@@ -35,7 +35,7 @@ jobs:
 
       # Tag the built image for Docker Hub
       - name: Tag Docker Image
-        run: docker tag my-docker-webapp:latest shaimaamaidi/github_reposiory:v1.0.0
+        run: docker tag my-docker-webapp:latest shaimaamaidi/mon_hub:v1.0.0
 
       # Push the Docker image to Docker Hub
       - name: Push Docker Image
