@@ -33,10 +33,6 @@ jobs:
       - name: Log in to Docker Hub
         run: echo "sha._.ima.3" | docker login -u shaimaamaidi --password-stdin
 
-      # Tag the built image for Docker Hub
-      - name: Tag Docker Image
-        run: docker tag mon-hub:latest shaimaamaidi/mon-hub:latest
-
       # Push the Docker image to Docker Hub
       - name: Push Docker Image
         run: docker push shaimaamaidi/mon-hub:latest
