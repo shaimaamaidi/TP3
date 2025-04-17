@@ -1,8 +1,13 @@
-# Utiliser l'image officielle de Nginx basée sur Alpine comme image de base
 FROM nginx:alpine
 
-# Copier la page web personnalisée dans le répertoire par défaut de Nginx
+# Copy your application files
 COPY index.html /usr/share/nginx/html/index.html
 
-# Exposer le port 80 pour le serveur web
+# Copy and set up the test script
+COPY runtests.sh /runtests.sh
+RUN chmod +x /runtests.sh
+
 EXPOSE 80
+
+# Custom entrypoint to run both nginx and tests
+CMD ["sh", "-c", "nginx -g 'daemon off;' & /runtests.sh"]
