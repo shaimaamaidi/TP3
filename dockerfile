@@ -1,13 +1,17 @@
 FROM nginx:alpine
 
-# Copy your application files
+# Répertoire de travail
+WORKDIR /app
+
+# Copier le fichier HTML dans le dossier de Nginx
 COPY index.html /usr/share/nginx/html/index.html
 
-# Copy and set up the test script
-COPY runtests.sh /runtests.sh
+# Copier le script de test
+COPY run-tests.sh /runtests.sh
 RUN chmod +x /runtests.sh
 
+# Exposer le port 80
 EXPOSE 80
 
-# Custom entrypoint to run both nginx and tests
-CMD ["sh", "-c", "nginx -g 'daemon off;' & /runtests.sh"]
+# Lancer Nginx et exécuter les tests
+CMD sh -c "nginx -g 'daemon off;' & /runtests.sh"
