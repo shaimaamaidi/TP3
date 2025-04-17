@@ -19,7 +19,7 @@ jobs:
 
       # Test Phase: Run the container and execute tests inside it
       - name: Run Container and Execute Tests
-        run: docker run --rm mon-hub:latest ./run-tests.sh
+        run: run: docker run --rm mon-hub:latest sh -c "/app/run-tests.sh"
 
   deploy:
     runs-on: ubuntu-latest
